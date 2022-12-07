@@ -148,7 +148,7 @@ _A Example or simple usecase video may be uploaded to youtube if uploaded then y
 
 <!-- ROADMAP -->
 ## Roadmap
-- [\] Add "components" document to easily copy & paste sections of the readme
+- [ ] Add "components" document to easily copy & paste sections of the readme
 - [ ] language Support
     - [+] English
 
