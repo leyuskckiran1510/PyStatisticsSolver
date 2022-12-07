@@ -6,6 +6,7 @@ import dotenv
 
 dotenv.load_dotenv()
 
+
 class Statistics:
     def __init__(self, data):
         self.raw_data = data
