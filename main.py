@@ -15,7 +15,9 @@ class Statistics:
         self._clean()
         self.N = sum([i[1] for i in self.data])
         self.x = [i[0] for i in self.data]
-        self.f = [i[2] for i in self.balanced_data]
+        self.f = [i[len(self.balanced_data[0])-1] for i in self.balanced_data] if len(self.balanced_data[0])!=1 else [i[1] for i in self.data]
+        self.fx = [self.f[i]*self.x[i] for i in range(len(self.f))]
+        self.midx = [(self.balanced_data[i][1]+self.balanced_data[i][0])/2   for i in range(len(self.f))] if len(self.balanced_data[0])==3  else [self.data[0] for i in range(len(self.f))]
         self.cumulative = self._cumulative()
         self.mean = self._mean()
         self.median = self._median()
@@ -33,6 +35,7 @@ class Statistics:
 
     def balance_continious_data(self):
         if(len(self.data[0])!=3):
+            print("in",self.data)
             return self.data
         offset = (self.data[1][0]-self.data[0][1])/2
         return [[i[0]-offset,i[1]+offset,i[2]] if i[0]!=0 else [i[0],i[1]+offset,i[2]] for i in self.data]     
@@ -48,7 +51,8 @@ class Statistics:
                 temp.append([i[0],i[1]])
             elif len(i)==1:
                 if i[0] not in temp:
-                    temp.append(i[0],self.data.count(i[0]))
+                    temp.append([i[0],self.data.count([i[0]])])
+                    
             else:
                 temp.append([0,0])
         self.data = temp
@@ -59,11 +63,11 @@ class Statistics:
 
     def stat_print(self):
         if len(self.balanced_data[0])==3:
-            print("Weights:-\t:-Boundries:-\t\tFrequency:-\t\tCumulative frequency")
-        elif len(self.balanced_data[0])==3:
+            print("raw_X\t\tX\t\tmid-x\tf\tcf\tfx")
+        elif len(self.balanced_data[0])==2:
             print("Weights:-\tFrequency:-\t")
         for i in range(len(self.data)):
-            print(f"{self.raw_data[i]}\t{self.balanced_data[i]}\t\t{self.f[i]}\t\t{self.cumulative[i]}")
+            print(f"{self.raw_data[i][:-1]}\t{self.balanced_data[i][:-1]}\t{self.midx[i]}\t{self.f[i]}\t{self.cumulative[i]}\t{self.fx[i]}")
 
 
 
@@ -114,7 +118,7 @@ def flatten_list(nested_list, flattened_list):
 def parser(string):
     pattren=r"\d{1,9}[-|\s]\d{0,9}\s+\d+"
     final=[]
-    string = string.replace("\t","    ")
+    string = string.replace("\t","    ").replace("\n","    ")
     matches = re.findall(pattren,string)
     for match in matches:
         blnk=[]
@@ -124,8 +128,15 @@ def parser(string):
         final.extend([blnk])
     return final
 
+def indvual(string):
+    pattren = r"\d{1,9}"
+    final=[]
+    matches = re.findall(pattren,string)
+    for match in matches:
+        final.append([int(match)])
+    return final
 def test():
-    a='''3. Check the following requency distribUion talble, co1S
+    vert='''3. Check the following requency distribUion talble, co1S
 Weights (in kg) Number of stud
 31 35   9
 36 40   5
@@ -139,9 +150,42 @@ Weights (in kg) Number of stud
 () What is class-interval for classes 31 35?
 () How many students are there in the range of 41-45 kgs?
 Salu
+
     '''
+    hori='''Number of wickets
+Number of bowlers
+20-60
+7
+60-100
+5
+100-150
+16
+150-250
+12
+250-350
+2
+350-450
+3
+'''
+    dis='''>140
+4
+>145
+11
+>150
+29
+>155
+40
+>160
+46
+>165
+51
+'''
+    indv="25 36 42 55 60 62 73 75 78 95"
+
     #c= parser(extract('image3.png'))
-    c= parser(a)
+    c= parser(hori)
+    #c= indvual(indv)
+    #print(c)
     d= Statistics(c)
     # pprint(d.raw_data)
     # pprint(d.data)
