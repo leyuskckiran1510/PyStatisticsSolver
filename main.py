@@ -23,6 +23,14 @@ class Statistics:
         self.cumulative = self._cumulative()
         self.mean = self._mean()
         self.median = self._median()
+        self.mode = self._mode()
+        self.range = self._range()
+        self.variance = self._variance()
+        self.std_dev = self._std_dev()
+        self.skewness = self._skewness()
+        self.kurtosis = self._kurtosis()
+        self.quartiles = self._quartiles()
+
 
 
 
@@ -103,8 +111,48 @@ class Statistics:
             return self.data[a][0]
         return 0
 
-    def _stndrdev(self):
-        pass
+    def _mode(self):
+        return self.data[self.f.index(max(self.f))][0]
+    
+    def _range(self):
+        return f"{self.data[-1][0]}-{self.data[0][0]}"
+    
+    def _variance(self):
+        return sum(list(map(lambda x:(x[0]-self.mean)**2*x[1],self.data)))/self.N
+
+    def _std_dev(self):
+        return self.variance**0.5
+
+    def _skewness(self):
+        return sum(list(map(lambda x:(x[0]-self.mean)**3*x[1],self.data)))/(self.N*self.std_dev**3)
+
+    def _kurtosis(self):
+        return sum(list(map(lambda x:(x[0]-self.mean)**4*x[1],self.data)))/(self.N*self.std_dev**4)
+
+    def _quartiles(self):
+        q1 = self._quartile(0.25)
+        q2 = self._quartile(0.50)
+        q3 = self._quartile(0.75)
+        return [q1,q2,q3]
+
+    def _quartile(self,quartile):
+        diff_dic={}
+        for n,i in enumerate(self.cumulative):
+                if i>self.N*quartile:
+                    diff_dic[abs(i-(self.N*quartile))] = n
+        a=sorted(diff_dic.items())[0][1]
+        if len(self.balanced_data[0])==3:
+            median_class = self.balanced_data[a]
+            return median_class[0] +abs(median_class[0]-median_class[1]) * ((self.N*quartile - self.cumulative[a-1])/self.f[a])
+        elif len(self.balanced_data[0])==2:
+            return self.data[a][0]
+        else:
+            return self.data[a][0]
+
+
+
+
+
 
 
 
@@ -209,8 +257,8 @@ Number of bowlers
     indv="25 36 42 55 60 62 73 75 78 95"
     #c= parser(extract("image.jpg"))
     #c=parser("'Height (in cm)\tNumber of girls\t\r\n1 140\t4\t\r\n145\t11\t\r\n150\t29\t\r\n>1 155\t\r\n1 160\t\r\n165\t51\t\r\n'",0)
-    #c= parser(hori)
-    c= parser(indv,1)
+    c= parser(hori)
+    #c= parser(indv,1)
     print(c)
     d= Statistics(c)
     # pprint(d.raw_data)
@@ -220,10 +268,36 @@ Number of bowlers
     d.stat_print()
     print("Mean:-",d.mean)
     print("Median:-",d.median)
+    print("Mode:-",d.mode)
+    print("Range:-",d.range)
+    print("Variance:-",d.variance)
+    print("Standard Deviation:-",d.std_dev)
+    print("Quartile:-",d.quartiles)
+    print("Skewness:-",d.skewness)
+    print("Kurtosis:-",d.kurtosis)
+    
+
     
     
 def menu():
-    menu = 
+    menu = '''
+    1. Extract Text From Image
+    2. Enter Text Manually
+    3. Exit
+    '''
+    print(menu)
+    choice = input("Enter Your Choice:- ")
+    if choice == '1':
+        pass
+    elif choice == '2':
+        pass
+    elif choice == '3':
+        exit()
+    else:
+        print("Invalid Choice")
+        menu()
+
+
 
 
 
