@@ -103,7 +103,8 @@ class Statistics:
             return self.data[a][0]
         return 0
 
-    def 
+    def _stndrdev(self):
+        pass
 
 
 
@@ -114,7 +115,6 @@ def extract(name='a.jpg'):
         name = compressor.compress_img(name,bw=True)
         compressed =True
     print("[*]Generating Text From Image")
-    exit()
     url = 'https://api.ocr.space/parse/image'
     with open(name, 'rb') as image_file:
         payload = {
@@ -160,14 +160,6 @@ def parser(string,typ=0):
         flatten_list(lis,blnk) 
         final.extend([blnk])
     return final
-
-def indvual(string):
-    final=[]
-    matches = re.findall(pattren,string)
-    for match in matches:
-        final.append([int(match)])
-    return final
-
 
 def test():
     vert='''3. Check the following requency distribUion talble, co1S
@@ -230,7 +222,9 @@ Number of bowlers
     print("Median:-",d.median)
     
     
-    
+def menu():
+    menu = 
+
 
 
 
