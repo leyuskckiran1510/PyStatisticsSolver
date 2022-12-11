@@ -21,7 +21,7 @@
     <a href="https://github.com/leyuskckiran1510/PyStatisticsSolver"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/leyuskckiran1510/PyStatisticsSolver">View Demo</a>
+    <a href="https://youtu.be/wBP-cz_0-wg">View Demo</a>
     ·
     <a href="https://github.com/leyuskckiran1510/PyStatisticsSolver/issues">Report Bug</a>
     ·
@@ -140,7 +140,7 @@ It main use is for the lazy people who are bored to type the data in the Online 
 
 _For more examples, please refer to the [Documentation](https://github.com/leyuskckiran1510/PyStatisticsSolver)._
 
-_A Example or simple usecase video may be uploaded to youtube if uploaded then you can click this link [Video](https://youtube.com/watch)_
+_A Example or simple usecase video may be uploaded to youtube if uploaded then you can click this link [Video](https://youtu.be/wBP-cz_0-wg)_
 
 1. Using Cli Verison 
    ```sh
