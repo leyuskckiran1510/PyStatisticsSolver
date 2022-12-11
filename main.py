@@ -9,7 +9,8 @@ dotenv.load_dotenv()
 
 
 class Statistics:
-    def __init__(self, data):
+    def __init__(self, data,typ):
+        self.typ = typ
         self.raw_data = data
         self.data = data
         self._clean()
@@ -239,7 +240,7 @@ def parser(string,typ=0):
         lis = [i for i in lis if i!=['']]
         flatten_list(lis,blnk) 
         final.extend([blnk])
-    return final
+    return final,typ
 
 
 

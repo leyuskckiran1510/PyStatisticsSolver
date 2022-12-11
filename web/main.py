@@ -9,7 +9,8 @@ dotenv.load_dotenv()
 
 
 class Statistics:
-    def __init__(self, data):
+    def __init__(self, data,typ=0):
+        self.typ = typ
         self.raw_data = data
         self.data = data
         self._clean()
@@ -20,6 +21,8 @@ class Statistics:
         self.f = [i[len(self.balanced_data[0])-1] for i in self.balanced_data] if len(self.balanced_data[0])!=1 else [i[1] for i in self.data]
         self.fx = [self.f[i]*self.x[i] for i in range(len(self.f))]
         self.midx = [(self.balanced_data[i][1]+self.balanced_data[i][0])/2   for i in range(len(self.f))] if len(self.balanced_data[0])==3  else [self.data[i][0] for i in range(len(self.f))]
+        self.sumX = sum(self.midx)
+        self.sumfx = sum(self.fx)
         self.cumulative = self._cumulative()
         self.mean = self._mean()
         self.median = self._median()
@@ -52,6 +55,7 @@ class Statistics:
                 value[ln]=1
                 continue
             value[ln]+=1
+        print(self.raw_data,value,self.typ)
         ttl = sorted(value.values())[0]
         for n in range(0,len(self.data)):
             if len(self.data[n])>ttl:
@@ -121,7 +125,7 @@ class Statistics:
         return sum(list(map(lambda x:(x[0]-self.mean)**2*x[1],self.data)))/self.N
 
     def _std_dev(self):
-        return self.variance**0.5
+        return self.variance**0.5 if not self.variance==0 else 1
 
     def _skewness(self):
         return sum(list(map(lambda x:(x[0]-self.mean)**3*x[1],self.data)))/(self.N*self.std_dev**3)
@@ -236,7 +240,10 @@ def parser(string,typ=0):
         lis = [i for i in lis if i!=['']]
         flatten_list(lis,blnk) 
         final.extend([blnk])
-    return final
+    print(final)
+    if typ:
+        return sorted(final),typ
+    return final,typ
 
 
 
@@ -285,6 +292,7 @@ Number of bowlers
 >165
 51
 '''
+    return vert
     indv="25 36 42 55 60 62 73 75 78 95"
     #c= parser(extract("image.jpg"))
     #c=parser("'Height (in cm)\tNumber of girls\t\r\n1 140\t4\t\r\n145\t11\t\r\n150\t29\t\r\n>1 155\t\r\n1 160\t\r\n165\t51\t\r\n'",0)
