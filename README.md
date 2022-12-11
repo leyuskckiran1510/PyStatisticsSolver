@@ -10,10 +10,10 @@
 <br />
 <div align="center">
   <a href="https://github.com/leyuskckiran1510/PyStatisticsSolver">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <!--<img src="images/logo.png" alt="Logo" width="80" height="80">-->
   </a>
 
-  <h3 align="center">PyStatisticsSolver</h3>
+  <h1 align="center">PyStatisticsSolver</h1>
 
   <p align="center">
     A simple python automation tool to compute possible statistics calculation like means,median etc. for given photo of series of data(i.e individual series,diescrit series and continious series).
@@ -62,7 +62,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/leyuskc/PyStatisticsSolver)
+<!--[![Product Name Screen Shot][product-screenshot]](https://github.com/leyuskc/PyStatisticsSolver)-->
 
 This is a simple project for automating the repetating calculation of statistical data in Class.
 The main theme here is to take the picture of the statistical chart and this will dump all the data nicely and calculated . It only shows the calulated values not the steps/process. The final result are printed and the consecutative calculations like fx f(x-xbar) .. 
@@ -142,6 +142,22 @@ _For more examples, please refer to the [Documentation](https://github.com/leyus
 
 _A Example or simple usecase video may be uploaded to youtube if uploaded then you can click this link [Video](https://youtube.com/watch)_
 
+1. Using Cli Verison 
+   ```sh
+   python ./main.py
+   ```
+
+ ###  OR
+1. Before using Web Version you need to install aditional package as follow 
+   ```sh
+   python -m pip install -r ./web/requirements.txt
+   ```
+2. Using Web Version 
+   ```sh
+   python ./web/web.py
+   ```
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -199,16 +215,16 @@ Project Link: [Click ME](https://github.com/leyuskckiran1510/PyStatisticsSolver)
 ## Acknowledgments
 
 I used ChatGpt for some problems as it was faster for me to ask it then to fid the term and find the correct result aside the Ads.
+And Also great thanks to ocr-space teams for providing free ocr api . Also thanks to [@othneildrew](https://github.com/othneildrew/Best-README-Template) for providing these readme template.
 
-
+* [OCR-SPACE](https://ocr.space/)
 * [ChatGPT](https://chat.openai.com/chat)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/leyuskckiran1510/PyStatisticsSolver.svg?style=for-the-badge
 [contributors-url]: https://github.com/leyuskckiran1510/PyStatisticsSolver/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/leyuskckiran1510/PyStatisticsSolver.svg?style=for-the-badge
