@@ -1,9 +1,9 @@
 import requests
+import json
 import re
 import os
 import dotenv
 import compressor
-import color 
 
 dotenv.load_dotenv()
 
@@ -90,13 +90,10 @@ class Statistics:
         return sum(list(map(lambda x:x[0]*x[1],self.data)))/self.N
 
     def stat_print(self):
-        print("Statistics:")
-        val=75
-        print(f"{color.Back.RGB(val,val,val)}\033[2J")
-        print(f"{color.Fore.RGB(255,0,0)}raw_X   \t{color.Fore.RGB(0,200,0)}X           \t{color.Fore.RGB(0,0,200)}mid-x\t{color.Fore.RGB(200,200,0)}f\t{color.Fore.RGB(200,200,200)}cf\t{color.Fore.RGB(0,200,200)}fx")
+        print("raw_X\tX\tmid-x\tf\tcf\tfx")
         for i in range(len(self.data)):
-            print(f"{color.Fore.RGB(255,0,0)}{self.raw_data[i][:-1]}\t{color.Fore.RGB(0,200,0)}{self.balanced_data[i][:-1]}\t{color.Fore.RGB(0,0,200)}{self.midx[i]}\t{color.Fore.RGB(200,200,0)}{self.f[i]}\t{color.Fore.RGB(200,200,200)}{self.cumulative[i]}\t{color.Fore.RGB(0,200,200)}{self.fx[i]}")
-        
+            print(f"{self.raw_data[i][:-1]}\t{self.balanced_data[i][:-1]}\t{self.midx[i]}\t{self.f[i]}\t{self.cumulative[i]}\t{self.fx[i]}")
+
 
 
     def _median(self):
@@ -309,7 +306,6 @@ Number of bowlers
     print("Quartile:-",d.quartiles)
     print("Skewness:-",d.skewness)
     print("Kurtosis:-",d.kurtosis)
-    print("\n"*5)
     
 
     

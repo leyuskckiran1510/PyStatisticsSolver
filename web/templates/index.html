@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Web Page</title>
+</head>
+<body>
+   <form action="/" method="post" enctype="multipart/form-data">
+       <input type="file" name="image" accept="image/*" capture="environment">
+       <input type="submit" value="Submit" />
+
+    </form>
+    <table>
+    {% if data %}
+   {% for image in data %}
+            <tr>
+                <td>{{data}}</td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+    </table>
+</body>
+
+</html>

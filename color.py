@@ -69,10 +69,3 @@ Fore = AFore()
 Back = ABack()
 Style = AStyle()
 
-while 1:
-    for i in range(0,255,10):
-        for j in range(0,255,10):
-            for k in range(0,255,10):
-                print(Fore.RGB(i,j,k)+Style.BRIGHT+"hello"+Style.RESET_ALL,end="")
-            print("\r",end="")
-        #print("\n",end="")
